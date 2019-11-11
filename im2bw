@@ -1,0 +1,22 @@
+%here we basically need the binary image without using the im2bw function
+%so we need to take the orginal image and get the gray scale then we can
+%get the binary vision by using a threshold
+
+function rgb2binary()
+
+%reading a rgb random image and storing it in a variable 
+pic = imread('peppers.png');
+%subplotting the original image to show it next to the gray scale image
+subplot(1,4,1), imshow(pic), title('rgb image');
+%doubling the image to fit with the output image
+pic = im2double(pic);
+%storing the sum of the red vision (::1) of the image and the green
+%vision (::2) and the blue vision (::3) of the image to get the gray scale
+outpic = .4*pic(:,:,1) + .50*pic(:,:,2) + .30*pic(:,:,3);
+%subplotting the gray scale image to show it next to the original image
+subplot(1,4,2), imshow(outpic), title('gray scale image');
+%the binary image without using the im2bw
+binaryPic = outpic > 0.4;
+%subplotting the binary image to show it next to the gray scale image and
+%the original image
+subplot(1,4,3), imshow(binaryPic), title('binary image');
