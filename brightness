@@ -1,0 +1,33 @@
+%here we are manipulating the brightness
+function rgb2binary()
+
+%reading a rgb random image and storing it in a variable 
+pic = imread('peppers.png');
+%subplotting the original image to show it next to the gray scale image
+subplot(3,3,1), imshow(pic), title('rgb image');
+%increasing the brightness of the rgb image
+subplot(3,3,2), imshow(pic*3), title('high bright rgb image');
+%decreasing the brightness of the rgb image
+subplot(3,3,3), imshow(pic/3), title('low bright rgb image');
+
+%doubling the image to fit with the output image
+pic = im2double(pic);
+%storing the sum of the red vision (::1) of the image and the green
+%vision (::2) and the blue vision (::3) of the image to get the gray scale
+outpic = .4*pic(:,:,1) + .50*pic(:,:,2) + .30*pic(:,:,3);
+%subplotting the gray scale image to show it next to the original image
+subplot(3,3,4), imshow(outpic), title('gray scale image');
+%increasing the brightness of the gray scale image
+subplot(3,3,5), imshow(outpic*3), title('high bright gray scale');
+%decreasing the brightness of the gray scale image
+subplot(3,3,6), imshow(outpic/3), title('low bright gray scale');
+
+%the binary image without using the im2bw
+binaryPic = outpic > 0.4;
+%subplotting the binary image to show it next to the gray scale image and
+%the original image
+subplot(3,3,7), imshow(binaryPic), title('binary image');
+%increasing the brightness of the binary image
+subplot(3,3,8), imshow(binaryPic*6), title('high bright binary');
+%decreasing the brightness of the binary image
+subplot(3,3,9), imshow(binaryPic/3), title('low bright binary');
