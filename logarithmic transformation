@@ -1,0 +1,20 @@
+%here we want to implement the log transformation
+function logTransformation()
+%reading the rgb image
+orginal = imread('peppers.png');
+% %subplotting the original image to show it next to the log image
+subplot(1,2,1),imshow(orginal),title('orginal rgb image');
+%doubling the image
+orginal = im2double(orginal);
+%taking a value as my factor in the log (C) transformation
+factor = 2;
+%taking the size measurements of the image to loop over it
+[x,y,~] = size(orginal);
+%looping over the rows and columns to get the log of the image
+for i = 1:1:x
+    for j = 1:1:y
+        outpic(i,j) = factor * log(1+orginal(i,j));
+    end
+end
+% %subploting the log image with the orginal image
+subplot(1,2,2),imshow(outpic),title('log rgb image');
