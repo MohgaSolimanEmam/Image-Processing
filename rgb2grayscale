@@ -1,0 +1,34 @@
+% initializing a function that will transfer any rgb image to a gray scale
+% image
+function rgb2grayscale()
+%reading a rgb random image and storing it in a variable 
+pic = imread('peppers.png');
+%subplotting the original image to show it next to the gray scale image
+subplot(1,2,1), imshow(pic), title('rgb image');
+%getting the size of the image to use it in the loop
+[x,y,~] = size(pic);
+%initializing the first loop that will iterate over the x-axis
+for i = 1:1:x
+    %initializing the second loop which will iterate over the y-axis
+    for j = 1:1:y
+        %storing the sum of the red vision (::1) of the image and the green
+        %vision (::2) and the blue vision (::3) of the image to get the gray scale 
+        outpic(i,j) = 0.40*pic(i,j,1) + 0.50*pic(i,j,2) + 0.30*pic(i,j,3);
+    end
+end
+%subplotting the gray scale image to show it next to the original image
+subplot(1,2,2), imshow(outpic), title('gray scale');
+
+%other way
+% 
+%reading a rgb random image and storing it in a variable 
+pic = imread('peppers.png');
+%subplotting the original image to show it next to the gray scale image
+subplot(1,2,1), imshow(pic), title('rgb image');
+%doubling the image to fit with the output image
+pic = im2double(pic);
+%storing the sum of the red vision (::1) of the image and the green
+%vision (::2) and the blue vision (::3) of the image to get the gray scale
+outpic = .4*pic(:,:,1) + .50*pic(:,:,2) + .30*pic(:,:,3);
+%subplotting the gray scale image to show it next to the original image
+subplot(1,2,2), imshow(outpic), title('gray scale');
