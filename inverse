@@ -1,0 +1,11 @@
+%here we want the img inverse without the imcomplement() function
+function imgInverse()
+%reading the rgb image
+orginal = imread('peppers.png');
+%subploting the orginal rgb image so we can spot the difference between it
+%and the inverse 
+subplot(1,2,1),imshow(orginal),title('orginal rgb image');
+%geting the inverse of the image without imcomplement() function
+inv = 255 - orginal;
+%subploting the inverse image with the orginal image
+subplot(1,2,2),imshow(inv),title('inverse rgb image');
