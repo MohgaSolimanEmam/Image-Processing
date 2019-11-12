@@ -1,0 +1,14 @@
+%here we want to stretch the histogram without using the builtin functions
+function stretchedHistogram()
+%reading an image
+orginal = imread('pout.tif');
+%subplotting the orginal image 
+subplot(2,2,1), imshow(orginal), title('orginal image');
+%subplotting the histogram of the orginal image 
+subplot(2,2,2), imhist(orginal), title('orginal image histogram');
+%stretching the gray levels to control the contrast
+outpic = imadjust(orginal,[0.3,0.7],[0.0,1.0]);
+%subplotting the new image
+subplot(2,2,3), imshow(outpic), title('stretched image');
+%subplotting the histogram of the new image to see the difference
+subplot(2,2,4), imhist(outpic), title('stretched image histogram');
