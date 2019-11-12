@@ -1,0 +1,14 @@
+function averageFilter()
+orginal = imread('pout.tif');
+subplot(1,2,1),imshow(orginal),title('orginal image');
+%initailizing my blurring filter as an array divided by 9
+filterArray = ones(3,3)/9;
+%storing my new blurred image in a new variable an chosing it to be the
+%same size
+%same for the zero padding
+blurredImg = filter2(filterArray,orginal,'same');
+subplot(1,2,2),imshow(blurredImg/255),title('blurred image');
+%valid removes the zero padding
+%blurredImg = filter2(filterArray,orginal,'valid');
+%full gives you a bigger image which will get you a more blurring effect
+%blurredImg = filter2(filterArray,orginal,'full');
